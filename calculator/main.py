@@ -1,5 +1,5 @@
 import sys
-from pkg.calculator import Calculator
+from calculator.pkg.calculator import Calculator
 from pkg.render import render
 
 
