@@ -2,6 +2,7 @@ import unittest
 import os
 
 import functions.get_files_info as get_files_info
+import functions.get_file_content as get_file_content
 
 class TestGetFilesInfo(unittest.TestCase):
     def setUp(self):
@@ -54,6 +55,30 @@ class TestGetFilesInfo(unittest.TestCase):
         working_directory = os.path.abspath("calculator")
         result = get_files_info.get_files_info(working_directory, os.path.abspath("../"))
         print(f"Parent Directory result: {result}")
+
+    def test_get_file_content_lorem(self):
+        working_directory = os.path.abspath("calculator")
+        file_path = os.path.abspath("calculator/lorem.txt")
+        result = get_file_content.get_file_content(working_directory, file_path)
+        print(f"Lorem file content result: {result}")
+
+    def test_get_file_content_main(self):
+        working_directory = os.path.abspath("calculator")
+        file_path = os.path.abspath("calculator/main.py")
+        result = get_file_content.get_file_content(working_directory, file_path)
+        print(f"Main file content result: {result}")
+
+    def test_get_file_content_pkg_calc(self):
+        working_directory = os.path.abspath("calculator")
+        file_path = os.path.abspath("calculator/pkg/calculator.py")
+        result = get_file_content.get_file_content(working_directory, file_path)
+        print(f"Pkg calc file content result: {result}")
+
+    def test_get_file_content_bin_cat(self):
+        working_directory = os.path.abspath("calculator")
+        file_path = os.path.abspath("bin/cat")
+        result = get_file_content.get_file_content(working_directory, file_path)
+        print(f"Bin cat file content result: {result}")
 
 if __name__ == "__main__":
     unittest.main()

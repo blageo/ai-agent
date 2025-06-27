@@ -13,7 +13,10 @@ def get_file_content(working_directory, file_path):
         
         MAX_CHARS = 10000
         with open(abs_file_path, 'r') as f:
-            file_content_string = f.read(MAX_CHARS)
+            file_content_string = f.read(MAX_CHARS + 1)
+            if len(file_content_string) > MAX_CHARS:
+                file_content_string = file_content_string[:MAX_CHARS]
+                file_content_string += '\n[...File "{file_path}" truncated at 10000 characters]'
             return file_content_string
         
     except FileNotFoundError:
